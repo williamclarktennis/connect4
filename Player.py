@@ -1,4 +1,4 @@
-from connect4 import Board
+import Board
 import random
 """
 Implementation of a Connect-4 Player class
@@ -15,9 +15,9 @@ class Player:
     side - a single character string that is either 'X' or 'O'
            (the letter Oh, not the number 0), denoting the side this
            Player will be taking
-    ply -  a non-negative integer (i.e., ≥ 0) representing how many moves
+    ply -  a non-negative integer (i.e., greater than or equal to 0) representing how many moves
            into the future this Player will look in order to evaluate the
-           “goodness” of a move
+           goodness of a move
     is_random - a boolean value denoting how this Player will handle situations
                 when there exist multiple moves that are equally good.
                 If set to True, then this Player will break ties randomly;
@@ -36,7 +36,8 @@ class Player:
             side - string 'X' or 'O'
             ply - how far ahead into the future the player will
                   look when planning next move
-            is_random - how to break ties between best moves
+            is_random - see class description for further explanation:
+                how to break ties between best moves
         
         Returns:
             None.
@@ -128,7 +129,8 @@ class Player:
 
            
             if board.allows_move(w) == False:    #base case if column is full
-                initial_scores[w] = Board.INVALID_MOVE  #assigns that col w/ -1        
+                
+                initial_scores[w] = -1   #Board.INVALID_MOVE - assigns that col w/ -1        
        
             #base case if either the player or opponent win:
             elif (board.win_for(self.side) == True

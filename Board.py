@@ -1,4 +1,4 @@
-from connectfour import Player
+
 """
 Implementation of a Connect-4 Board class
 
@@ -333,11 +333,25 @@ class Board:
         print()
         print(self)
 
+
+
 def main():
     """Tester function"""
+    myDic = {"x": 'X', "X": 'X', "o": 'O', 'O': 'O'}
+    player1 = raw_input("Do you want to play as 'x' or 'o'? ")
+    difficulty = int(raw_input("How hard do you want the AI to be? Choose a level 1-4. Levels 5 and above have slow response times: "))
+    
     b = Board(7, 6)
-    px = 'human'
-    po = Player('O', 1, True)
+    #px = 'human'
+    
+    from Player import Player;
+    if myDic[player1] == 'X':
+        po = Player('O', difficulty, True) #AI player is X 
+        px = 'human'
+    else:
+        po = 'human'
+        px = Player('X', difficulty, True) #AI player is O
+    
     b.play_game(px, po)
     #used pass here as an attempt to get rid of runtime error
 
